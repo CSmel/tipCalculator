@@ -1,0 +1,71 @@
+body{
+    font-family: 'Roboto', sans-serif;}
+
+.appContainer {
+    display: grid;
+    min-height: 100%;
+    border: 1px solid black;
+   grid-template-areas: "heading heading" "labels output";
+    grid-template-columns: 1fr 1fr ;
+
+}
+.labels{
+    display: grid;
+    grid-area: labels;
+}
+.outputs{
+    display: grid;
+    grid-area: output;
+}
+
+.labels, .outputs {
+    flex-direction: column;
+    padding: 20px
+}
+
+input{
+    margin-bottom: 10px;
+    width: 100%;
+    padding-top: 10px;
+  padding-bottom: 10px;
+    padding-left: 10px;
+}
+h1{
+    display: grid;
+    grid-area: heading;
+}
+
+i {
+    padding: 5px;
+}
+
+#sliderSlide > i {
+    position: absolute;
+    display: block;
+    transform: translate(-15%, -100%);
+    top: 50%;
+    pointer-events: none;
+    text-align: center;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.input-container,#sliderSlide {
+    position: relative;
+}
+
+.input-container > i {
+    position: absolute;
+    display: block;
+    transform: translate(-10%, -75%);
+    top: 50%;
+    pointer-events: none;
+    text-align: center;
+    font-style: normal;
+    font-size: 12px;
+}
+@media (min-width: 540px) {
+.appContainer{
+    width: 540px;
+}
+}

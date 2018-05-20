@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tip Calculator</title>
+    <link href="css/app.css" rel="stylesheet">
+    <link href="bower_components/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+
+</head>
+<body><div class="wrapper">
+<div class="appContainer">
+    <h1>Tip Calculator</h1>
+    <div class="labels">
+        <label for="bill">Bill</label>
+        <label for="amount">Tip</label>
+        <label for="tip">Tip Amount</label>
+        <label for="total">Total</label></div>
+    <div class="outputs">
+        <div class="input-container"><i>$</i>
+            <input id="bill" type="text"></div>
+        <div id="sliderSlide"><i>%</i>
+            <input id="amount" type="text">
+            <div id="slider" class="sliderChange"></div>
+        </div>
+        <div class="input-container"><i>$</i>
+            <input id="tip" type="text"></div>
+        <div class="input-container"><i>$</i>
+            <input id="total" type="text"></div>
+    </div>
+</div></div>
+<script>
+    function calculationController() {
+        const bill = parseFloat($('#bill').val());
+        const tip = $('#amount').val() / 100;
+        const tipAmount = bill * tip;
+
+        const total = tipAmount + bill;
+
+
+        $("#tip").val((tipAmount.toFixed(2)));
+        $("#total").val((total.toFixed(2)));
+    };
+    $(function () {
+        $(".sliderChange").slider({
+            value: 10,
+            min: 16,
+            max: 20,
+            step: 2,
+            slide: function (event, ui) {
+                $("#amount").val(ui.value);
+            }
+        });
+        $('#amount').val($("#slider").slider("value"));
+
+    });
+    $("#bill").on("change", function () {
+        var bill = parseFloat($('#bill').val());
+        $("#bill").val(bill.toFixed(2));
+        calculationController();
+    });
+
+    $(".sliderChange").on("slidechange", function () {
+        calculationController();
+    });
+</script>
+</body>
+</html>
