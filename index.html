@@ -10,40 +10,41 @@
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
 
 </head>
-<body><div class="wrapper">
-<div class="appContainer">
-    <h1>Tip Calculator</h1>
-    <div class="labels">
-        <label for="bill">Bill</label>
-        <label for="amount">Tip</label>
-        <label for="tip">Tip Amount</label>
-        <label for="total">Total</label></div>
-    <div class="outputs">
-        <div class="input-container"><i>$</i>
-            <input id="bill" type="text"></div>
-        <div id="sliderSlide"><i>%</i>
-            <input id="amount" type="text">
-            <div id="slider" class="sliderChange"></div>
+<body>
+<div class="wrapper">
+    <div class="appContainer">
+        <h1>Tip Calculator</h1>
+        <div class="outputs">
+            <div class="input-container"><i>$</i>
+                <input id="bill" type="text"></div>
+            <label for="bill">Bill</label>
+            <div id="sliderSlide"><i>%</i>
+                <input id="amount" type="text">
+                <div id="slider" class="sliderChange"></div>
+            </div>
+            <label for="amount">Tip</label>
+            <div class="input-container"><i>$</i>
+                <input id="tip" type="text"></div>
+            <label for="tip">Tip Amount</label>
+            <div class="input-container"><i>$</i>
+                <input id="total" type="text"></div>
+            <label for="total">Total</label>
         </div>
-        <div class="input-container"><i>$</i>
-            <input id="tip" type="text"></div>
-        <div class="input-container"><i>$</i>
-            <input id="total" type="text"></div>
     </div>
-</div></div>
+</div>
 <script>
+    // calculation function
     function calculationController() {
-        const bill = parseFloat($('#bill').val());
-        const tip = $('#amount').val() / 100;
-        const tipAmount = bill * tip;
+        const bill = parseFloat($('#bill').val()); // receive bill amount and format it to float double
+        const tip = $('#amount').val() / 100; // receive the tip amount and divided by 100 to format into decimal form.
+        const tipAmount = bill * tip; // multiplication to find tip amount
+        const total = tipAmount + bill; // total is tip amount + bill amount.
 
-        const total = tipAmount + bill;
 
-
-        $("#tip").val((tipAmount.toFixed(2)));
-        $("#total").val((total.toFixed(2)));
+        $("#tip").val((tipAmount.toFixed(2))); // format the tip value
+        $("#total").val((total.toFixed(2))); // format the total value
     };
-    $(function () {
+    $(function () {// function for the slider
         $(".sliderChange").slider({
             value: 10,
             min: 16,
@@ -56,14 +57,14 @@
         $('#amount').val($("#slider").slider("value"));
 
     });
-    $("#bill").on("change", function () {
+    $("#bill").on("change", function () { // when the bill output changes, automatically perform new calculation and format the input.
         var bill = parseFloat($('#bill').val());
         $("#bill").val(bill.toFixed(2));
-        calculationController();
+        calculationController(); // call the calculation function
     });
 
     $(".sliderChange").on("slidechange", function () {
-        calculationController();
+        calculationController();// call  calculation function when the slider changes
     });
 </script>
 </body>

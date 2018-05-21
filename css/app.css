@@ -1,42 +1,53 @@
-body{
-    font-family: 'Roboto', sans-serif;}
+body {
+    font-family: 'Roboto', sans-serif;
+}
 
 .appContainer {
     display: grid;
+    background-color: #0b3e6f;
+    color: #fff;
     min-height: 100%;
     border: 1px solid black;
-   grid-template-areas: "heading heading" "labels output";
-    grid-template-columns: 1fr 1fr ;
+    grid-template-areas: "heading" " output";
+    grid-template-columns: 1fr;
+}
 
-}
-.labels{
-    display: grid;
-    grid-area: labels;
-}
-.outputs{
+.outputs {
     display: grid;
     grid-area: output;
 }
 
-.labels, .outputs {
+.outputs {
     flex-direction: column;
     padding: 20px
 }
 
-input{
+label {
+    color: #AB6705
+}
+
+label, input {
     margin-bottom: 10px;
     width: 100%;
     padding-top: 10px;
-  padding-bottom: 10px;
-    padding-left: 10px;
-}
-h1{
-    display: grid;
-    grid-area: heading;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    background-color: #0b3e6f;
+    font-weight: bold;
 }
 
-i {
-    padding: 5px;
+input {
+    font-size: 1.8em;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #AB6705;
+    color: #fff
+}
+
+h1 {
+    display: grid;
+    grid-area: heading;
 }
 
 #sliderSlide > i {
@@ -47,10 +58,15 @@ i {
     pointer-events: none;
     text-align: center;
     font-style: normal;
-    font-size: 12px;
+    font-size: 1.5em;
+    padding: 5px;
 }
 
-.input-container,#sliderSlide {
+#amount {
+    max-width: 40px;
+}
+
+.input-container, #sliderSlide {
     position: relative;
 }
 
@@ -62,10 +78,16 @@ i {
     pointer-events: none;
     text-align: center;
     font-style: normal;
-    font-size: 12px;
+    font-size: 1.5em;
+    padding: 5px;
 }
+
+.ui-slider-horizontal, .ui-slider-handle {
+    background-color: #AB6705 !important;
+}
+
 @media (min-width: 540px) {
-.appContainer{
-    width: 540px;
-}
+    .appContainer {
+        width: 540px;
+    }
 }
